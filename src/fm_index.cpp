@@ -33,7 +33,7 @@ public:
     M_array = suffix_array(str);
     std::vector<char> bwt;
     bwt.reserve(M_array.size());
-    for (auto x: suffix_array(str)) {
+    for (const auto x: suffix_array(str)) {
       bwt.push_back(x == 0 ? '$' : str[x - 1]);
     }
     M_bin.fill(0);
