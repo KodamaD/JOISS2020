@@ -1,5 +1,9 @@
+#pragma once
 
 #include "suffix_array_induced_sorting.cpp"
+
+#include <cstddef>
+#include <cstdint>
 #include <string>
 
 std::vector<std::size_t> suffix_array(const std::string &str) {

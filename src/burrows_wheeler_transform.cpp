@@ -1,5 +1,8 @@
+#pragma once
 
 #include "suffix_array.cpp"
+
+#include <string>
 
 std::string burrows_wheeler_transform(const std::string &str) {
   std::string res;

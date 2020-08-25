@@ -1,6 +1,13 @@
+#pragma once
 
 #include "suffix_array.cpp"
 #include "wavelet_matrix.cpp"
+
+#include <cstddef>
+#include <utility>
+#include <vector>
+#include <string>
+#include <array>
 
 class fm_index {
 public:
@@ -11,7 +18,7 @@ private:
   std::vector<size_type> M_array;
   wavelet_matrix<char, 7> M_matrix;
 
-  std::pair<size_type, size_type> calc(const std::string &str) const {
+  std::pair<size_type, size_type> M_calc(const std::string &str) const {
     size_type left = 0, right = M_array.size();
     for (size_type i = str.size(); i-- > 0;) {
       const auto c = str[i];
@@ -40,12 +47,12 @@ public:
   }
 
   size_type occur(const std::string &str) const {
-    const auto tmp = calc(str);
+    const auto tmp = M_calc(str);
     return tmp.second - tmp.first;
   }
 
   std::vector<size_type> locate(const std::string &str) const {
-    const auto tmp = calc(str);
+    const auto tmp = M_calc(str);
     std::vector<size_type> res;
     res.reserve(tmp.second - tmp.first);
     for (size_type i = tmp.first; i < tmp.second; i++) {

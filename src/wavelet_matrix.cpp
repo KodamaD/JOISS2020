@@ -1,5 +1,7 @@
+#pragma once
 
 #include "bit_vector.cpp"
+
 #include <array>
 #include <algorithm>
 
@@ -19,6 +21,11 @@ public:
   wavelet_matrix() = default;
   template <class InputIterator>
   explicit wavelet_matrix(InputIterator first, InputIterator last) { construct(first, last); }
+
+  template <class InputIt>
+  void construct(InputIt first, InputIt last) {
+    construct(std::vector<value_type>(first, last));
+  }
 
   void construct(std::vector<value_type> vec) { 
     const size_type size = vec.size();
