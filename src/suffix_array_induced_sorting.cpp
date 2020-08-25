@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <utility>
 
-std::vector<std::int32_t> SA_IS(std::vector<std::int32_t> vec, std::size_t bin_size) {
+std::vector<std::int32_t> suffix_array_induced_sorting(std::vector<std::int32_t> vec, std::size_t bin_size) {
 
   const std::size_t size = vec.size();
   vec.push_back(0);
@@ -102,11 +102,12 @@ std::vector<std::int32_t> SA_IS(std::vector<std::int32_t> vec, std::size_t bin_s
       }
       relabel[lms_size - 1 - order[lms_idx[i]]] = new_bin_size;
     }
-    const auto sa = SA_IS(std::move(relabel), new_bin_size + 1);
+    const auto sa = suffix_array_induced_sorting(std::move(relabel), new_bin_size + 1);
     for (std::size_t i = 1; i <= lms_size; i++) {
       lms_idx[lms_size - i] = lms[lms_size - 1 - sa[i]];
     }
     induced_sort(lms_idx);
   }
   return array;
+  
 }
