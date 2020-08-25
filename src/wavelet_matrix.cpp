@@ -20,22 +20,20 @@ public:
   template <class InputIterator>
   explicit wavelet_matrix(InputIterator first, InputIterator last) { construct(first, last); }
 
-  template <class InputIterator>
-  void construct(InputIterator first, InputIterator last) { 
-    const size_type size = std::distance(first, last);
+  void construct(std::vector<value_type> vec) { 
+    const size_type size = vec.size();
     std::vector<bool> bit(size);
-    std::vector<value_type> current(first, last);
     std::vector<value_type> next(size);
     for (size_type story = word_size; story-- > 0;) {
       auto left = next.begin(), right = next.rbegin();
       for (size_type i = 0; i < size; ++i) {
-        bit[i] = current[i] >> story & 1;
-        (bit[i] ? *(right++) : *(left++)) = current[i];
+        bit[i] = vec[i] >> story & 1;
+        (bit[i] ? *(right++) : *(left++)) = vec[i];
       }
       M_fid[story].construct(bit);
       M_zero[story] = left - next.begin();
       std::reverse(next.rbegin(), right);
-      current.swap(next);
+      vec.swap(next);
     }
   }
 
