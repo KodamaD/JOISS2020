@@ -32,7 +32,8 @@ public:
     std::vector<bool> bit(size);
     std::vector<value_type> next(size);
     for (size_type story = word_size; story-- > 0;) {
-      auto left = next.begin(), right = next.rbegin();
+      auto left = next.begin();
+      auto right = next.rbegin();
       for (size_type i = 0; i < size; ++i) {
         bit[i] = vec[i] >> story & 1;
         (bit[i] ? *(right++) : *(left++)) = vec[i];
