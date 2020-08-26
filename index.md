@@ -43,11 +43,13 @@ layout: default
 * :heavy_check_mark: <a href="library/src/fm_index.cpp.html">src/fm_index.cpp</a>
 * :heavy_check_mark: <a href="library/src/suffix_array.cpp.html">src/suffix_array.cpp</a>
 * :heavy_check_mark: <a href="library/src/suffix_array_induced_sorting.cpp.html">src/suffix_array_induced_sorting.cpp</a>
+* :heavy_check_mark: <a href="library/src/suffix_automaton.cpp.html">src/suffix_automaton.cpp</a>
 * :heavy_check_mark: <a href="library/src/wavelet_matrix.cpp.html">src/wavelet_matrix.cpp</a>
 
 
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/fm_index.test.cpp.html">test/fm_index.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/suffix_automaton.test.cpp.html">test/suffix_automaton.test.cpp</a>
 
 
